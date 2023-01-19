@@ -1,1 +1,1 @@
-# POC---TypeScript
+# POC-TypeScript
