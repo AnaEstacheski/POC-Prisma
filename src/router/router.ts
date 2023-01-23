@@ -1,5 +1,5 @@
 import { Request, Response, Router } from "express";
-import { getUser, postUser } from "../controller/user-controller.js";
+import { getUser, postUser, updateUser } from "../controller/user-controller.js";
 import { schemaValidation } from "../middleware/schemaValidation.js";
 import userSchema from "../schema/userSchema.js";
 
@@ -10,7 +10,7 @@ router.get("/health", (req: Request, res: Response) => {
 })
 router.get("/users", getUser);
 router.post("/users", schemaValidation(userSchema), postUser);
-// router.put("/users", updateUser);
+router.put("/users/:id", schemaValidation(userSchema), updateUser);
 // router.delete("/users", deleteUser);
 
 
