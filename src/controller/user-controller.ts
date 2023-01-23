@@ -31,11 +31,11 @@ export async function getUser(req: Request, res: Response) {
 }
 
 export function updateUser(req: Request, res: Response) {
-    const id = req.params.id as string;
+    const id = req.params.id;
     const newUsername = req.body as User;
 
     try {
-        connectionDB.query(`UPDATE users SET username=$1 WHERE id=$2;`, [newUsername, id]);
+        connectionDB.query(`UPDATE users SET username=$1 WHERE id=$2;`, [newUsername.username, id]);
         return res.sendStatus(200);
     } catch (error) {
         console.log(error);
@@ -43,6 +43,13 @@ export function updateUser(req: Request, res: Response) {
     }
 }
 
-export function deleteUser(req: Request, res: Response) {
-    
+export async function deleteUser(req: Request, res: Response) {
+    const id = req.params.id
+
+	const deleted = await connectionDB.query(`DELETE FROM users WHERE id=$1;`,[id]);
+    if (deleted === null) {
+        return res.sendStatus(404)
+    }
+	res.sendStatus(200);
+    return;
 }

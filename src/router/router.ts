@@ -1,5 +1,5 @@
 import { Request, Response, Router } from "express";
-import { getUser, postUser, updateUser } from "../controller/user-controller.js";
+import { deleteUser, getUser, postUser, updateUser } from "../controller/user-controller.js";
 import { schemaValidation } from "../middleware/schemaValidation.js";
 import userSchema from "../schema/userSchema.js";
 
@@ -11,7 +11,7 @@ router.get("/health", (req: Request, res: Response) => {
 router.get("/users", getUser);
 router.post("/users", schemaValidation(userSchema), postUser);
 router.put("/users/:id", schemaValidation(userSchema), updateUser);
-// router.delete("/users", deleteUser);
+router.delete("/users/:id", deleteUser);
 
 
 export default router;
