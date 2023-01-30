@@ -1,7 +1,7 @@
 import { Request, Response, Router } from "express";
 import { insertExposition, getExposition, updateExposition, deleteExposition, insertArtWork, insertArtist } from "../controller/controller.js";
-import { schemaValidation } from "../middleware/schemaValidation.js";
 import { artistSchema, artWorkSchema, expositionSchema } from "../schema/schemas.js";
+import { schemaValidation } from "../middleware/schemaValidation.js";
 
 const router = Router();
 
