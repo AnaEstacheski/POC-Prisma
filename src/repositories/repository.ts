@@ -26,8 +26,13 @@ export async function getExpositionRepository() {
             artworks: {
                 select: {
                     artwork: true
-                },
+                },    
             },
+            artists: {
+                select: {
+                    artist_name: true
+                }
+            }
         }
     });
 }
