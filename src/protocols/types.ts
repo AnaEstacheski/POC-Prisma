@@ -14,5 +14,3 @@ export type Artwork = {
     id?: number,
     artwork: string
 }
-
-

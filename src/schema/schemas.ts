@@ -10,6 +10,6 @@ export const artWorkSchema = Joi.object({
 
 export const expositionSchema = Joi.object({
     gallery_name: Joi.string().required(),
-    artwork: Joi.string().required(),
-    artist: Joi.string().required()
+    artwork: Joi.number().required(),
+    artist: Joi.number().required()
 });

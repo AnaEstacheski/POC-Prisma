@@ -8,6 +8,7 @@ const router = Router();
 router.get("/health", (req: Request, res: Response) => {
     res.sendStatus(200);
 })
+
 router.get("/expositions", getExposition);
 router.post("/artist", schemaValidation(artistSchema), insertArtist);
 router.post("/art", schemaValidation(artWorkSchema), insertArtWork);

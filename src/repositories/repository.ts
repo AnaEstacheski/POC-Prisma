@@ -21,7 +21,15 @@ export async function insertExpositionRepository(exposition: Exposition) {
 }
 
 export async function getExpositionRepository() {
-    return prisma.exposition.findMany();
+    return prisma.exposition.findMany({
+        include: {
+            artworks: {
+                select: {
+                    artwork: true
+                },
+            },
+        }
+    });
 }
 
 export async function updateExpositionRepository(exposition: Exposition, id: number) {
@@ -31,7 +39,7 @@ export async function updateExpositionRepository(exposition: Exposition, id: num
         },
         create: exposition,
         update: exposition
-    })
+    });
 }
 
 export async function deleteExpositionRepository(id: number) {
