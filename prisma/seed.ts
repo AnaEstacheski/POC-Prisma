@@ -2,6 +2,28 @@ import { PrismaClient } from "@prisma/client";
 const prisma = new PrismaClient();
 
 async function main() {
+    await prisma.artists.createMany({
+        data: [
+            {
+                artist_name: "Staczak"
+            }
+        ]
+    }),
+
+    await prisma.artworks.createMany({
+        data: [
+                {
+                    artwork: "chaos"
+                },
+                {
+                    artwork: "NEW LEAF"
+                },
+                {
+                    artwork: "dandelion"
+                },
+            ]
+        }),
+
     await prisma.exposition.createMany({
         data: [
             {
